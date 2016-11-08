@@ -1,0 +1,24 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+javadoc.options.encoding = 'UTF-8'
+
+group = GROUP
+version = VERSION_NAME
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
+
+apply from: "${rootDir}/gradle/gradle-mvn-push.gradle"

@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.12'
+    distributionUrl = 'http://services.gradle.org/distributions/gradle-2.14.1-all.zip'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
