@@ -1,0 +1,18 @@
+language: android
+jdk:
+  - oraclejdk8
+android:
+  components:
+    - build-tools-22.0.1
+    - android-23
+    - extra-android-m2repository
+
+before_install:
+  - chmod +x gradlew
+  - export JAVA8_HOME=/usr/lib/jvm/java-8-oracle
+  - export JAVA_HOME=$JAVA8_HOME
+
+script: ./gradlew clean build --info --stacktrace
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
