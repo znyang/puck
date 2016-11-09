@@ -1,10 +1,8 @@
 buildscript {
     repositories {
-        maven {
-            name 'nd nexus android-public'
-            url "http://nexus.sdp.nd/nexus/content/groups/android-public/"
-        }
         jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
@@ -13,10 +11,6 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            name 'nd nexus android-public'
-            url "http://nexus.sdp.nd/nexus/content/groups/android-public/"
-        }
         jcenter()
         maven { url "https://jitpack.io" }
     }
