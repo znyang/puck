@@ -8,7 +8,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     @VisibleForTesting
-    protected TextView mTvContent;
+    TextView mTvContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -15,8 +15,12 @@ buildscript {
 }
 
 allprojects {
+    ext {
+        isEnvCi = System.getenv('ENV_CI')
+        BUILD_TOOLS_VERSION = isEnvCi ? "22.0.1" : "25.0.0"
+    }
     repositories {
-        if (System.getenv('ENV_CI')) {
+        if (isEnvCi) {
             jcenter()
         } else {
             maven {

@@ -12,7 +12,7 @@ import org.robolectric.annotation.Config;
 
 
 @RunWith(PuckRobolectricRunner.class)
-@Config(constants = BuildConfig.class)
+@Config(constants = BuildConfig.class, sdk = 22)
 public class MainActivityTest {
 
     private MainActivity mMainActivity;
@@ -20,7 +20,6 @@ public class MainActivityTest {
     @Before
     public void setUp() throws Exception {
         mMainActivity = Robolectric.setupActivity(MainActivity.class);
-
     }
 
     @Test
