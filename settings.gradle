@@ -1,3 +1,4 @@
+include ':library-test'
 //include ':analysis-sample'
 // Sets the output JAR filename
 rootProject.name = 'android-puck'

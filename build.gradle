@@ -1,8 +1,13 @@
 buildscript {
     repositories {
-        jcenter()
+        if (System.getenv('ENV_CI')) {
+            jcenter()
+        } else {
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+        }
         maven { url "https://jitpack.io" }
-        maven { url 'http://maven.oschina.net/content/groups/public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
@@ -10,8 +15,18 @@ buildscript {
 }
 
 allprojects {
+    ext {
+        isEnvCi = System.getenv('ENV_CI')
+        BUILD_TOOLS_VERSION = isEnvCi ? "22.0.1" : "25.0.0"
+    }
     repositories {
-        jcenter()
+        if (isEnvCi) {
+            jcenter()
+        } else {
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+        }
         maven { url "https://jitpack.io" }
     }
 }

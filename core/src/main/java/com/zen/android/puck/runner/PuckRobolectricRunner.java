@@ -10,10 +10,12 @@ import org.robolectric.util.ReflectionHelpers;
 
 /**
  * fixed manifest not found error.
- *
+ * <p>
  * Created by zenyang on 2016/11/9.
  */
-public class PuckRobolectricRunner extends RobolectricTestRunner{
+public class PuckRobolectricRunner extends RobolectricTestRunner {
+
+    private AndroidManifest mAndroidManifest;
 
     /**
      * Creates a runner to run {@code testClass}. Looks in your working directory for your AndroidManifest.xml file
@@ -30,6 +32,10 @@ public class PuckRobolectricRunner extends RobolectricTestRunner{
 
     @Override
     protected AndroidManifest getAppManifest(Config config) {
+        if (mAndroidManifest != null) {
+            return mAndroidManifest;
+        }
+
         if (config.constants() == Void.class) {
             Logger.error("Field 'constants' not specified in @Config annotation");
             Logger.error("This is required when using RobolectricGradleTestRunner!");
@@ -40,23 +46,38 @@ public class PuckRobolectricRunner extends RobolectricTestRunner{
         final String flavor = getFlavor(config);
         final String packageName = getPackageName(config);
 
-        final FileFsFile res;
+        AndroidManifest mft = super.getAppManifest(config);
+//        if (FileFsFile.from(BUILD_OUTPUT, "res").exists()) {
+//            res = FileFsFile.from(BUILD_OUTPUT, "res", flavor, type);
+//        } else {
+//            res = FileFsFile.from(BUILD_OUTPUT, "bundles", flavor, type, "res");
+//        }
+        final FileFsFile res = FileFsFile.from(mft.getResDirectory().getPath());
+        final FileFsFile assets = getAssets(type, flavor);
+        final FileFsFile manifest = getManifestFile(type, flavor);
+
+        Logger.debug("Robolectric assets directory: " + assets.getPath());
+        Logger.debug("Robolectric res directory: " + res.getPath());
+        Logger.debug("Robolectric manifest path: " + manifest.getPath());
+        Logger.debug("Robolectric package name: " + packageName);
+
+        mAndroidManifest = new AndroidManifest(manifest, res, assets, packageName);
+        return mAndroidManifest;
+    }
+
+    private FileFsFile getAssets(String type, String flavor) {
         final FileFsFile assets;
-        FileFsFile manifest = null;
-
-        if (FileFsFile.from(BUILD_OUTPUT, "res").exists()) {
-            res = FileFsFile.from(BUILD_OUTPUT, "res", flavor, type);
-        } else {
-            res = FileFsFile.from(BUILD_OUTPUT, "bundles", flavor, type, "res");
-        }
-
         if (FileFsFile.from(BUILD_OUTPUT, "assets").exists()) {
             assets = FileFsFile.from(BUILD_OUTPUT, "assets", flavor, type);
         } else {
             assets = FileFsFile.from(BUILD_OUTPUT, "bundles", flavor, type, "assets");
         }
+        return assets;
+    }
 
+    private FileFsFile getManifestFile(String type, String flavor) {
         String[] dirs = {"full", "aapt"};
+        FileFsFile manifest = null;
 
         if (FileFsFile.from(BUILD_OUTPUT, "manifests").exists()) {
             for (String dir : dirs) {
@@ -70,12 +91,7 @@ public class PuckRobolectricRunner extends RobolectricTestRunner{
         if (manifest == null || !manifest.exists()) {
             manifest = FileFsFile.from(BUILD_OUTPUT, "bundles", flavor, type, "AndroidManifest.xml");
         }
-
-        Logger.debug("Robolectric assets directory: " + assets.getPath());
-        Logger.debug("Robolectric res directory: " + res.getPath());
-        Logger.debug("Robolectric manifest path: " + manifest.getPath());
-        Logger.debug("Robolectric package name: " + packageName);
-        return new AndroidManifest(manifest, res, assets, packageName);
+        return manifest;
     }
 
     private String getType(Config config) {
