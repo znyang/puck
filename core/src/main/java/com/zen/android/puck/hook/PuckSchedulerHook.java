@@ -1,4 +1,4 @@
-package com.zen.android.puck.scheduler;
+package com.zen.android.puck.hook;
 
 import rx.Scheduler;
 import rx.plugins.RxJavaSchedulersHook;

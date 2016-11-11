@@ -1,9 +1,12 @@
-apply plugin: 'java'
-
-javadoc.options.encoding = 'UTF-8'
+apply plugin: 'com.android.library'
 
 group = GROUP
 version = VERSION_NAME
+
+android{
+    compileSdkVersion 23
+    buildToolsVersion BUILD_TOOLS_VERSION
+}
 
 sourceSets {
     main {
@@ -20,8 +23,8 @@ dependencies {
     compile "org.robolectric:robolectric:3.1.1"
     compile "junit:junit:4.12"
     compile "org.mockito:mockito-core:${mockitoVersion}"
-    compileOnly 'io.reactivex:rxjava:1.1.6'
-    compileOnly 'io.reactivex:rxandroid:1.2.1'
+    provided 'io.reactivex:rxjava:1.1.6'
+    provided 'io.reactivex:rxandroid:1.2.1'
 }
 
 apply from: "${rootDir}/gradle/gradle-mvn-push.gradle"

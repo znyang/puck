@@ -25,14 +25,6 @@ public class MainActivityTest {
     @Before
     public void setUp() throws Exception {
         mMainActivity = Robolectric.setupActivity(MainActivity.class);
-
-//        RxAndroidPlugins.getInstance().reset();
-//        RxAndroidPlugins.getInstance().registerSchedulersHook(new RxAndroidSchedulersHook() {
-//            @Override
-//            public Scheduler getMainThreadScheduler() {
-//                return Schedulers.immediate();
-//            }
-//        });
     }
 
     @Test
