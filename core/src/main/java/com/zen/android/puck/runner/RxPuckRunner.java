@@ -1,8 +1,10 @@
 package com.zen.android.puck.runner;
 
 import com.zen.android.puck.hook.PuckObservableExecutionHook;
+import com.zen.android.puck.rx.RxAndroidTestLifecycle;
 
 import org.junit.runners.model.InitializationError;
+import org.robolectric.TestLifecycle;
 
 import rx.plugins.RxJavaPlugins;
 
@@ -14,8 +16,7 @@ import rx.plugins.RxJavaPlugins;
 public class RxPuckRunner extends PuckRobolectricRunner {
     /**
      * Creates a runner to run {@code testClass}. Looks in your working directory for your
-     * AndroidManifest.xml file and res directory by default. Use the {@link Config} annotation to
-     * configure.
+     * AndroidManifest.xml file and res directory by default.
      *
      * @param testClass the test class to be run
      * @throws InitializationError if junit says so
@@ -26,4 +27,8 @@ public class RxPuckRunner extends PuckRobolectricRunner {
         RxJavaPlugins.getInstance().registerObservableExecutionHook(new PuckObservableExecutionHook());
     }
 
+    @Override
+    protected Class<? extends TestLifecycle> getTestLifecycleClass() {
+        return RxAndroidTestLifecycle.class;
+    }
 }

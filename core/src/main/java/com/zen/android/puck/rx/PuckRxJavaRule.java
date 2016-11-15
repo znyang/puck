@@ -1,4 +1,4 @@
-package com.zen.android.puck.rule;
+package com.zen.android.puck.rx;
 
 import com.zen.android.puck.hook.PuckSchedulerHook;
 
