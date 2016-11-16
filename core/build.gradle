@@ -6,6 +6,11 @@ version = VERSION_NAME
 android{
     compileSdkVersion 23
     buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 22
+    }
 }
 
 sourceSets {
