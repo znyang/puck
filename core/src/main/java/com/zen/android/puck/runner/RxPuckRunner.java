@@ -1,12 +1,9 @@
 package com.zen.android.puck.runner;
 
-import com.zen.android.puck.hook.PuckObservableExecutionHook;
 import com.zen.android.puck.rx.RxAndroidTestLifecycle;
 
 import org.junit.runners.model.InitializationError;
 import org.robolectric.TestLifecycle;
-
-import rx.plugins.RxJavaPlugins;
 
 /**
  * @author zen
@@ -23,8 +20,6 @@ public class RxPuckRunner extends PuckRobolectricRunner {
      */
     public RxPuckRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
-
-        RxJavaPlugins.getInstance().registerObservableExecutionHook(new PuckObservableExecutionHook());
     }
 
     @Override
