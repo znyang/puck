@@ -47,17 +47,11 @@ public class PuckRobolectricRunner extends RobolectricTestRunner {
         final String packageName = getPackageName(config);
 
         AndroidManifest mft = super.getAppManifest(config);
-//        if (FileFsFile.from(BUILD_OUTPUT, "res").exists()) {
-//            res = FileFsFile.from(BUILD_OUTPUT, "res", flavor, type);
-//        } else {
-//            res = FileFsFile.from(BUILD_OUTPUT, "bundles", flavor, type, "res");
-//        }
+
         final FileFsFile res = FileFsFile.from(mft.getResDirectory().getPath());
         final FileFsFile assets = getAssets(type, flavor);
         final FileFsFile manifest = getManifestFile(type, flavor);
 
-        Logger.debug("Robolectric assets directory: " + assets.getPath());
-        Logger.debug("Robolectric res directory: " + res.getPath());
         Logger.debug("Robolectric manifest path: " + manifest.getPath());
         Logger.debug("Robolectric package name: " + packageName);
 

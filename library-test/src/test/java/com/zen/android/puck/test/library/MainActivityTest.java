@@ -1,6 +1,6 @@
 package com.zen.android.puck.test.library;
 
-import com.zen.android.puck.runner.PuckRobolectricRunner;
+import com.zen.android.puck.runner.PuckRxJavaRunner;
 
 import junit.framework.Assert;
 
@@ -11,8 +11,8 @@ import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
 
 
-@RunWith(PuckRobolectricRunner.class)
-@Config(constants = BuildConfig.class, sdk = 22)
+@RunWith(PuckRxJavaRunner.class)
+@Config(constants = BuildConfig.class)
 public class MainActivityTest {
 
     private MainActivity mMainActivity;
@@ -26,5 +26,11 @@ public class MainActivityTest {
     public void testStart() throws Exception {
         Assert.assertNotNull(mMainActivity.mTvContent);
         Assert.assertSame(mMainActivity.mTvContent.getText(), "");
+    }
+
+    @Test
+    public void testLoadData() throws Exception {
+        mMainActivity.loadData();
+        Assert.assertSame(mMainActivity.mTvContent.getText(), "ok");
     }
 }
