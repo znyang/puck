@@ -10,8 +10,17 @@
 [JitPack](https://jitpack.io/#znyang/puck)
 
 ```gradle
+allprojects {
+	repositories {
+		//...
+		maven { url "https://jitpack.io" }
+	}
+}
+```
+
+```gradle
 dependencies {
-		testCompile 'com.github.znyang:puck:0.1-beta1'
+	testCompile 'com.github.znyang:puck:0.1-beta1'
 }
 ```
 
