@@ -1,9 +1,8 @@
 package com.zen.android.puck.test.library;
 
-import android.os.SystemClock;
-import android.support.annotation.VisibleForTesting;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
@@ -12,7 +11,7 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @VisibleForTesting
     TextView mTvContent;

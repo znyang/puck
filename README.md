@@ -10,3 +10,13 @@
 * Mockito
 * rxjava
 * rxandroid
+
+## 特性
+
+### Robolectric
+
+* 解决AndroidManifest.xml文件找不到的问题
+
+### RxJava & RxAndroid
+
+* 替换调度器源，解决测试过程中异步无回调问题（异步转同步）

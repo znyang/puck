@@ -17,7 +17,7 @@ import rx.schedulers.Schedulers;
  * @version 2016/11/11
  */
 
-public class PuckRxJavaRule implements TestRule {
+public class RxJavaRule implements TestRule {
 
     @Override
     public Statement apply(Statement base, Description description) {

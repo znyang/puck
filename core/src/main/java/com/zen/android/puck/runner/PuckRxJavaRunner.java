@@ -10,7 +10,7 @@ import org.robolectric.TestLifecycle;
  * @version 2016/11/11
  */
 
-public class RxPuckRunner extends PuckRobolectricRunner {
+public class PuckRxJavaRunner extends PuckRobolectricRunner {
     /**
      * Creates a runner to run {@code testClass}. Looks in your working directory for your
      * AndroidManifest.xml file and res directory by default.
@@ -18,7 +18,7 @@ public class RxPuckRunner extends PuckRobolectricRunner {
      * @param testClass the test class to be run
      * @throws InitializationError if junit says so
      */
-    public RxPuckRunner(Class<?> testClass) throws InitializationError {
+    public PuckRxJavaRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
     }
 

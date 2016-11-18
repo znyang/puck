@@ -1,6 +1,6 @@
 package com.zen.android.puck.test.library;
 
-import com.zen.android.puck.runner.RxPuckRunner;
+import com.zen.android.puck.runner.PuckRxJavaRunner;
 
 import junit.framework.Assert;
 
@@ -11,12 +11,9 @@ import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
 
 
-@RunWith(RxPuckRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21)
+@RunWith(PuckRxJavaRunner.class)
+@Config(constants = BuildConfig.class)
 public class MainActivityTest {
-
-//    @Rule
-//    public PuckRxJavaRule mPuckRxJavaRule = new PuckRxJavaRule();
 
     private MainActivity mMainActivity;
 
