@@ -9,6 +9,12 @@
 
 [JitPack](https://jitpack.io/#znyang/puck)
 
+```gradle
+dependencies {
+		testCompile 'com.github.znyang:puck:0.1-beta1'
+}
+```
+
 ## Dependencies
 
 * Robolectric
