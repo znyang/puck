@@ -5,6 +5,8 @@
 [![](https://jitpack.io/v/znyang/puck.svg)](https://jitpack.io/#znyang/puck)
 [![codecov](https://codecov.io/gh/znyang/puck/branch/master/graph/badge.svg)](https://codecov.io/gh/znyang/puck)
 
+![logo](/img/logo.jpg)
+
 ## Gradle配置
 
 [JitPack](https://jitpack.io/#znyang/puck)
