@@ -20,7 +20,7 @@ allprojects {
 
 ```gradle
 dependencies {
-	testCompile 'com.github.znyang:puck:0.1-beta1'
+	testCompile 'com.github.znyang:puck:0.1-beta2'
 }
 ```
 
@@ -43,10 +43,10 @@ dependencies {
 
 ## 用法
 
-使用 `PuckRxjavaRunner` 代替 `RobolectricTestRunner`
+使用 `PuckTestRunner` 代替 `RobolectricTestRunner`
 
 ```java
-@RunWith(PuckRxJavaRunner.class)
+@RunWith(PuckTestRunner.class)
 @Config(constants = BuildConfig.class)
 public class MainActivityTest {
 	// test methods
