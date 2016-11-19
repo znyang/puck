@@ -9,8 +9,7 @@ import rx.plugins.RxJavaObservableExecutionHook;
  *
  * @author znyang 2016/11/11 0011
  */
-
-public class PuckObservableExecutionHook extends RxJavaObservableExecutionHook{
+ class PuckObservableExecutionHook extends RxJavaObservableExecutionHook{
 
     @Override
     public <T> Observable.OnSubscribe<T> onCreate(Observable.OnSubscribe<T> f) {

@@ -1,4 +1,4 @@
-package com.zen.android.puck.test.library;
+package com.zen.android.puck.test.rx;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package com.zen.android.puck.test.library;
+package com.zen.android.puck.test.rx;
 
 import com.zen.android.puck.runner.PuckTestRunner;
 
@@ -28,4 +28,9 @@ public class MainActivityTest {
         Assert.assertSame(mMainActivity.mTvContent.getText(), "");
     }
 
+    @Test
+    public void testLoadData() throws Exception {
+        mMainActivity.loadData();
+        Assert.assertSame(mMainActivity.mTvContent.getText(), "ok");
+    }
 }
