@@ -37,7 +37,7 @@ dependencies {
 
 ### Robolectric
 
-* 解决AndroidManifest.xml文件找不到的问题
+* [解决AndroidManifest.xml文件找不到的问题](/doc/android-manifest-not-found.md)
 
 ### RxJava & RxAndroid
 
