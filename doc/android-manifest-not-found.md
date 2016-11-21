@@ -155,13 +155,15 @@ if (FileFsFile.from(buildOutputDir, "manifests").exists()) {
 ## 解决方案
 
 robolectric官方issues上有很多解决该问题的脚本
-比如插入任务的方式来复制文件：
+
+* 比如插入任务的方式来复制文件：
 [robolectric-issues1925](https://github.com/robolectric/robolectric/issues/1925)
-通过自定义Runner：
+* 通过自定义Runner：
 [robolectric-issues2581](https://github.com/robolectric/robolectric/issues/2581)
+
 我比较赞同使用Runner的方式解决，要考虑到不同变种版本的因素。
 
-**在robolectric v3.2版本中已经修复这个问题：**[commit](https://github.com/robolectric/robolectric/commit/24973cd7fa61401b3af1069f01d516e40080221c)
+**补充：在robolectric v3.2版本中已经修复这个问题：**[commit](https://github.com/robolectric/robolectric/commit/24973cd7fa61401b3af1069f01d516e40080221c)
 
 目前还只有快照版本。相关代码：
 
