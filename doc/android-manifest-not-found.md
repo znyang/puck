@@ -73,7 +73,7 @@ public File getAaptFriendlyManifestOutputFile() {
             "AndroidManifest.xml");
 }
 ```
-结果就是，从bundles/aapt移到了manifests/aapt下。
+结果就是，生成AndroidManifest.xml的目录，从bundles/aapt移到了manifests/aapt下。
 
 ## Robolectric中的处理
 
