@@ -1,4 +1,4 @@
-# AndroidManifest.xml文件找不到的问题
+# 使用Robolectric时AndroidManifest.xml文件找不到的问题
 
 错误如下：
 
