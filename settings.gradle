@@ -3,3 +3,4 @@ include ':library-test', ':rxjava-test', ':rxandroid-test'
 // Sets the output JAR filename
 rootProject.name = 'android-puck'
 include 'core'
+include 'plugin'
