@@ -1,6 +1,6 @@
 package com.zen.android.test.rx.android;
 
-import com.zen.android.puck.runner.PuckTestRunner;
+import com.zen.android.puck.runner.PuckDebugTestRunner;
 
 import junit.framework.Assert;
 
@@ -11,8 +11,8 @@ import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
 
 
-@RunWith(PuckTestRunner.class)
-@Config(constants = BuildConfig.class)
+@RunWith(PuckDebugTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21)
 public class MainActivityTest {
 
     private MainActivity mMainActivity;
