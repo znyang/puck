@@ -12,18 +12,23 @@
 [JitPack](https://jitpack.io/#znyang/puck)
 
 ```gradle
-allprojects {
-	repositories {
-		//...
-		maven { url "https://jitpack.io" }
-	}
+buildscript {
+    repositories {
+        maven { url "https://jitpack.io" }
+        // ...
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.github.znyang.puck:plugin:0.1-beta3'
+        // ...
+    }
 }
-```
 
-```gradle
-dependencies {
-	testCompile 'com.github.znyang:puck:0.1-beta2'
+// or specify project
+allprojects {
+    apply plugin: 'com.zen.android.puck'
 }
+
 ```
 
 ## Dependencies
@@ -38,10 +43,15 @@ dependencies {
 ### Robolectric
 
 * [解决AndroidManifest.xml文件找不到的问题](/doc/android-manifest-not-found.md)
+* 解决当前项目的依赖库中的assets文件找不到的问题(copyAssetsTask)
 
 ### RxJava & RxAndroid
 
 * 替换调度器源，解决测试过程中异步无回调问题（异步转同步）
+
+### Jacoco & Sonar
+
+* 建立jacoco Task和sonarqube/sonarRuner Task之间的关联
 
 ## 用法
 
