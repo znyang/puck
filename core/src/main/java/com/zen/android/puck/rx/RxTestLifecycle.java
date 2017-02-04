@@ -4,6 +4,7 @@ import com.zen.android.puck.hook.PuckSchedulerHook;
 import com.zen.android.puck.util.ReflectUtils;
 
 import org.robolectric.DefaultTestLifecycle;
+import org.robolectric.util.Logger;
 
 import java.lang.reflect.Method;
 
@@ -23,13 +24,21 @@ public class RxTestLifecycle extends DefaultTestLifecycle {
     public void beforeTest(Method method) {
         super.beforeTest(method);
 
-        RxJavaPlugins.getInstance().reset();
-        RxJavaPlugins.getInstance().registerSchedulersHook(new PuckSchedulerHook());
+        resetRxJavaPlugin();
+        try {
+            RxJavaPlugins.getInstance().registerSchedulersHook(new PuckSchedulerHook());
+        } catch (IllegalStateException e) {
+            Logger.error("RxJava SchedulersHook has register");
+        }
 
         if (hasUseRxAndroid) {
             rx.android.plugins.RxAndroidPlugins.getInstance().reset();
-            rx.android.plugins.RxAndroidPlugins.getInstance().registerSchedulersHook(
-                    new HookBuilder().build());
+            try {
+                rx.android.plugins.RxAndroidPlugins.getInstance().registerSchedulersHook(
+                        new HookBuilder().build());
+            } catch (IllegalStateException e) {
+                Logger.error("RxAndroid SchedulersHook has register");
+            }
         }
     }
 
@@ -40,7 +49,7 @@ public class RxTestLifecycle extends DefaultTestLifecycle {
         if (hasUseRxAndroid) {
             rx.android.plugins.RxAndroidPlugins.getInstance().reset();
         }
-        RxJavaPlugins.getInstance().reset();
+        resetRxJavaPlugin();
     }
 
     private static class HookBuilder {
@@ -53,4 +62,14 @@ public class RxTestLifecycle extends DefaultTestLifecycle {
             };
         }
     }
+
+    private static void resetRxJavaPlugin() {
+        try {
+            RxJavaPlugins.getInstance().reset();
+        } catch (IllegalAccessError e) {
+            Logger.error("RxJavaPlugin.reset() call failed!");
+            ReflectUtils.callMethod(RxJavaPlugins.getInstance(), "reset");
+        }
+    }
+
 }
