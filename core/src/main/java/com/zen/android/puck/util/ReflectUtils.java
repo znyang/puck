@@ -1,5 +1,10 @@
 package com.zen.android.puck.util;
 
+import org.robolectric.util.Logger;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * @author zen
  * @version 2016/11/19
@@ -22,6 +27,27 @@ public class ReflectUtils {
 
     public static boolean hasUseRxAndroid() {
         return hasClass("rx.android.plugins.RxAndroidPlugins");
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void callMethod(Object obj, String methodName) {
+        Class c = obj.getClass();
+        try {
+            Method m = c.getDeclaredMethod(methodName);
+            if (m != null) {
+                m.setAccessible(true);
+                m.invoke(obj);
+                Logger.info(c.getName() + "." + methodName + "() call by reflect");
+            }
+        } catch (NoSuchMethodException e) {
+            Logger.error(e.getMessage());
+        } catch (InvocationTargetException e) {
+            Logger.error(e.getMessage());
+        } catch (IllegalAccessException e) {
+            Logger.error(e.getMessage());
+        } catch (Exception e) {
+            Logger.error(e.getMessage());
+        }
     }
 
 }
