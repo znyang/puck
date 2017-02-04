@@ -15,8 +15,10 @@ afterEvaluate { project ->
                 pom.artifactId = POM_ARTIFACT_ID
                 pom.version = VERSION_NAME
 
-                repository(url: "/Users/zenyang/repo/")
-                snapshotRepository(url: "/Users/zenyang/repo/")
+//                repository(url: "/Users/zenyang/repo/")
+//                snapshotRepository(url: "/Users/zenyang/repo/")
+                repository(url: "file:///c://repo/")
+                snapshotRepository(url: "file:///c://repo/")
 
                 pom.project {
                     name POM_NAME
