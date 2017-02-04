@@ -37,7 +37,7 @@ public class ReflectUtils {
             if (m != null) {
                 m.setAccessible(true);
                 m.invoke(obj);
-                Logger.error("RxJavaPlugin.reset() call by reflect");
+                Logger.info(c.getName() + "." + methodName + "() call by reflect");
             }
         } catch (NoSuchMethodException e) {
             Logger.error(e.getMessage());

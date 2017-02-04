@@ -67,7 +67,7 @@ public class RxTestLifecycle extends DefaultTestLifecycle {
         try {
             RxJavaPlugins.getInstance().reset();
         } catch (IllegalAccessError e) {
-            Logger.error("RxJavaPlugin.reset() call failed!");
+            Logger.info("RxJavaPlugin.reset() call failed!");
             ReflectUtils.callMethod(RxJavaPlugins.getInstance(), "reset");
         }
     }
